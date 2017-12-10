@@ -13,6 +13,7 @@
     const dbRefRoot = firebase.database().ref().child("objectinfb")
 
     const arForm = [
+        {"id":"divAlert"},
         {"id":"txtEmail"},
         {"id":"pasPassword"},
         {"id":"btnLogin"},
@@ -34,9 +35,10 @@
 
         //Sign in
         const oPromise = oAuth.signInWithEmailAndPassword(sEmail,sPass)
-        oPromise.catch(oEvent => {
-
-            console.log("oEvent.message:",oEvent.message)
+        oPromise.catch(oResponse => {
+            oForms.divAlert.classList.remove("invisible")
+            oForms.divAlert.innerText = oResponse.message
+            console.log("oResponse.message:",oResponse.message)
         })
     })//btnLogin.click
 
@@ -49,7 +51,11 @@
 
         //Sign in
         const oPromise = oAuth.createUserWithEmailAndPassword(sEmail,sPass)
-        oPromise.catch(oEvent => console.log("oEvent.message:",oEvent.message))
+        oPromise.catch(oResponse => {
+            oForms.divAlert.classList.remove("invisible")
+            oForms.divAlert.innerText = oResponse.message
+            console.log("oResponse.message:",oResponse.message)
+        })
     })//btnSingup.click
     
     //btnLogout
@@ -59,14 +65,17 @@
 
     //añadir listener en tiempo real
     firebase.auth().onAuthStateChanged(oFireUser => {
+        oForms.divAlert.classList.remove("invisible")
         //si hay un usuario en sesion
         if(oFireUser) {
-            console.log("oFireUser en sesion:",oFireUser)
+            console.log("oFireUser en sesion:",JSON.stringify(oFireUser,null,3))
+            oForms.divAlert.innerText = "Usuario logueado: ".concat(oFireUser.email)
             oForms.btnLogin.classList.add("invisible")
             oForms.btnLogout.classList.remove("invisible")
         }
         //no hay usuario en sesion
         else {
+            oForms.divAlert.innerText = "No hay sesiones abiertas"
             oForms.btnLogin.classList.remove("invisible")
             oForms.btnLogout.classList.add("invisible")
         }
