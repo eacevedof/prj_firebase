@@ -12,15 +12,18 @@
 
     //obtener el contenedor
     const ePre = document.getElementById("preObjeto")
+    const ulLista = document.getElementById("ulLista")
     //hacer el bind con el objeto
     //ref apunta a la raiz de la bd
     //child apunta a la clave hijo del objeto. Algo parecido al nombre del campo
-    const dbRef = firebase.database().ref().child("objectinfb")
+    const dbRefRoot = firebase.database().ref().child("objectinfb")
+    const dbRefList = dbRefRoot.child("habilidades")
+
     //sinronizar cambios en el objeto
     //snap: (snapshot de la bd) Es un snapshot de la informacion que en ese momento se encuentra en la bd
-
     //pasando el snap a un json a mostrar en el elemento <pre>
     //JSON.stringify(valor[, remplazo [, espacio]])
-    dbRef.on("value",oSnap=> ePre.innerText = JSON.stringify(oSnap.val(),null,3))
-
+    dbRefRoot.on("value",oSnap=> ePre.innerText = JSON.stringify(oSnap.val(),null,3))
+    //d
+    dbRefList.on("child_added",oSnap=>console.log(oSnap))
 }())
