@@ -35,12 +35,12 @@
     })
 
     dbRefList.on("child_changed", oSnap => {
-        const eLiChanged = document.createElement('oSnap.key')
+        const eLiChanged = document.getElementById(oSnap.key)
         eLiChanged.innerText = oSnap.val()
     })
     
     dbRefList.on("child_removed", oSnap => {
-        const eLiRemove = document.createElement('oSnap.key')
+        const eLiRemove = document.getElementById(oSnap.key)
         eLiRemove.remove()
     })    
 }())
