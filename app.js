@@ -9,4 +9,11 @@
     }
 
     firebase.initializeApp(oConfig)
+
+    let eDivMain = document.getElementById("divMain")
+    let oDb = firebase.database().ref().child("text") 
+    //Se escucha un cambio en el valor, si lo hay 
+    oDb.on("value",oData => eDivMain.innerText = oData.val())
+    //oDb.on("value",snap => { console.log(snap);return eDivMain.innerText = snap.val()})
+    console.log(eDivMain)    
 }())
