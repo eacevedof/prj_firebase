@@ -12,7 +12,7 @@
 
     //obtener el contenedor
     const ePre = document.getElementById("preObjeto")
-    const ulLista = document.getElementById("ulLista")
+    const eUlLista = document.getElementById("ulLista")
     //hacer el bind con el objeto
     //ref apunta a la raiz de la bd
     //child apunta a la clave hijo del objeto. Algo parecido al nombre del campo
@@ -24,6 +24,23 @@
     //pasando el snap a un json a mostrar en el elemento <pre>
     //JSON.stringify(valor[, remplazo [, espacio]])
     dbRefRoot.on("value",oSnap=> ePre.innerText = JSON.stringify(oSnap.val(),null,3))
-    //d
-    dbRefList.on("child_added",oSnap=>console.log(oSnap))
+    // sincronizar cambios lista
+    // tal como está solo escucha los items borrados y nuevos, omite los updates
+    //para los updates hay que añadir un id (key=id)
+    dbRefList.on("child_added", oSnap => {
+        const eLi = document.createElement("li")
+        eLi.innerText = oSnap.val()
+        eLi.id = oSnap.key
+        eUlLista.appendChild(eLi)
+    })
+
+    dbRefList.on("child_changed", oSnap => {
+        const eLiChanged = document.createElement('oSnap.key')
+        eLiChanged.innerText = oSnap.val()
+    })
+    
+    dbRefList.on("child_removed", oSnap => {
+        const eLiRemove = document.createElement('oSnap.key')
+        eLiRemove.remove()
+    })    
 }())
