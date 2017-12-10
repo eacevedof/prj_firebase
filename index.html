@@ -21,10 +21,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- script de firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script>
       // Initialize Firebase
-      var config = {
+      var oConfig = {
         apiKey: "AIzaSyDiHhSUfYfEZ4oiDXn7l9ydvXdVqQXS4dA",
         authDomain: "fir-test-2017.firebaseapp.com",
         databaseURL: "https://fir-test-2017.firebaseio.com",
@@ -32,7 +33,17 @@
         storageBucket: "fir-test-2017.appspot.com",
         messagingSenderId: "350673738827"
       };
-      firebase.initializeApp(config);
+      firebase.initializeApp(oConfig);
     </script>    
+    <!--fin script firebase-->
+    <script>
+        //https://youtu.be/KIp_WKM4BIE?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj&t=187
+        let eDivMain = document.getElementById("divMain")
+        let oDb = firebase.database().ref().child("text") 
+        //Se escucha un cambio en el valor, si lo hay 
+        oDb.on("value",oData => eDivMain.innerText = oData.val())
+        //oDb.on("value",snap => { console.log(snap);return eDivMain.innerText = snap.val()})
+        console.log(eDivMain)
+    </script>
 </body>
 </html>
