@@ -13,6 +13,7 @@
     const dbRefRoot = firebase.database().ref().child("objectinfb")
 
     const arForm = [
+        {"id":"divAlert"},
         {"id":"prgUploader"},
         {"id":"filButton"}
     ]
@@ -23,18 +24,27 @@
         return Object.assign(oAc,oTemp)
     },{})
 
-    oForms.prgUploader.addEventListener("change",(oEvent) => {
+    //https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj&t=276
+    oForms.filButton.addEventListener("change",(oEvent) => {
+        alert("uploader changed")
         //guardamos el archivo que se está procesando
         const oFile = oEvent.target.files[0]
+        console.log(oFile)
         //un apuntador a la ruta de firebase
         const oStorageRef = firebase.storage().ref("mis_fotos/".concat(oFile.name))
         //subir archivo
         const oTask = oStorageRef.put(oFile)
+        
         //actualizar barra de progreso
         oTask.on("state_changed",(oSnapShot)=>{
+            console.log("progress")
             const fPercentage =  (oSnapShot.bytesTransfered / oSnapShot.totalBytes) * 100
             oForms.prgUploader.value = fPercentage
-        })//on.state_changed
+        }
+        ,(oErr)=>{console.log("error")}
+        ,()=>{console.log("complete")})//on.state_changed
     })
 
+    //Titulo que se pasa al ejecutar la función
+    document.getElementById("h1Top").innerText = sH1
 }("Firebase - Almacenamiento"))

@@ -166,7 +166,7 @@ dbRefList.on("child_removed", oSnap => {
 
 5. [Almacenamiento](https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
 - Ejemplo de subir archivo
-
+- [Configurar reglas para almacenamiento](https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj&t=295)
 ```js
 ```
 5. []()
