@@ -1,4 +1,4 @@
-(function() {
+(function(sH1) {
     const oConfig = {
         apiKey: "AIzaSyDiHhSUfYfEZ4oiDXn7l9ydvXdVqQXS4dA",
         authDomain: "fir-test-2017.firebaseapp.com",
@@ -43,4 +43,6 @@
         const eLiRemove = document.getElementById(oSnap.key)
         eLiRemove.remove()
     })    
-}())
+
+    document.getElementById("h1Top").innerText = sH1
+}("Firebase - Autenticación"))
