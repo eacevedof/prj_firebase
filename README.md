@@ -195,15 +195,16 @@ dbRefList.on("child_removed", oSnap => {
         
         //actualizar barra de progreso
         oTask.on("state_changed",(oSnapShot)=>{
-            console.log("progress","oSnapShot.totalBytes:",oSnapShot.totalBytes)
-            console.log("progress","oSnapShot.bytesTransferred:",oSnapShot.bytesTransferred)
-            const fPercentage =  (oSnapShot.bytesTransferred / oSnapShot.totalBytes) * 100
-            console.log("fPercentage:",fPercentage)
-            oForms.prgUploader.value = String(fPercentage)
-        }
-        ,(oErr)=>{console.log("error")}
-        ,()=>{console.log("complete")})//on.state_changed
-    })
+                console.log("progress","oSnapShot.totalBytes:",oSnapShot.totalBytes)
+                console.log("progress","oSnapShot.bytesTransferred:",oSnapShot.bytesTransferred)
+                const fPercentage =  (oSnapShot.bytesTransferred / oSnapShot.totalBytes) * 100
+                console.log("fPercentage:",fPercentage)
+                oForms.prgUploader.value = String(fPercentage)
+            }
+            ,(oErr)=>{console.log("error")}
+            ,()=>{console.log("complete")}
+        )//on.state_changed
+    })//filButton.addEventListener
 ```
 5. []()
 ```js
