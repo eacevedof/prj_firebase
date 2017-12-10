@@ -163,17 +163,18 @@ dbRefList.on("child_removed", oSnap => {
     //Titulo que se pasa al ejecutar la función
     document.getElementById("h1Top").innerText = sH1
 ```
+
+5. [Almacenamiento](https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
+- Ejemplo de subir archivo
+
+```js
+```
 5. []()
-
-
 ```js
 ```
-
+5. []()
 ```js
 ```
-
-```js
-```
-
+5. []()
 ```js
 ```
