@@ -26,10 +26,10 @@
 
     //https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj&t=276
     oForms.filButton.addEventListener("change",(oEvent) => {
-        alert("uploader changed")
+        //alert("uploader changed")
         //guardamos el archivo que se está procesando
         const oFile = oEvent.target.files[0]
-        console.log(oFile)
+        console.log("oFile:",oFile)
         //un apuntador a la ruta de firebase
         const oStorageRef = firebase.storage().ref("mis_fotos/".concat(oFile.name))
         //subir archivo
@@ -39,7 +39,7 @@
         oTask.on("state_changed",(oSnapShot)=>{
             console.log("progress")
             const fPercentage =  (oSnapShot.bytesTransfered / oSnapShot.totalBytes) * 100
-            oForms.prgUploader.value = fPercentage
+            oForms.prgUploader.value = String(fPercentage)
         }
         ,(oErr)=>{console.log("error")}
         ,()=>{console.log("complete")})//on.state_changed
