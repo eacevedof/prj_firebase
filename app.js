@@ -8,12 +8,16 @@
         messagingSenderId: "350673738827"
     }
 
-    firebase.initializeApp(oConfig)
+    firebase.initializeApp(oConfig) 
 
-    let eDivMain = document.getElementById("divMain")
-    let oDb = firebase.database().ref().child("text") 
-    //Se escucha un cambio en el valor, si lo hay 
-    oDb.on("value",oData => eDivMain.innerText = oData.val())
-    //oDb.on("value",snap => { console.log(snap);return eDivMain.innerText = snap.val()})
-    console.log(eDivMain)    
+    //obtener el contenedor
+    const ePre = document.getElementById("preObjeto")
+    //hacer el bind con el objeto
+    //ref apunta a la raiz de la bd
+    //child apunta a la clave hijo del objeto. Algo parecido al nombre del campo
+    const dbRef = firebase.database().ref().child("objectinfb")
+    //sinronizar cambios en el objeto
+    //snap: (snapshot de la bd) Es un snapshot de la informacion que en ese momento se encuentra en la bd
+    dbRef.on("value",oSnap=>console.log(oSnap.val()))
+
 }())
