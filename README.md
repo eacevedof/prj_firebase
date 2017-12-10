@@ -33,3 +33,11 @@ __proto__:Object
 
 2. [Sincronización de objetos en tiempo real](https://youtu.be/lwdTgA1pTX0?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
 
+```js
+//Se ha definido un POJO en firebase
+const objectinfb = {
+    apellidos: "López",
+    edad:32,
+    nombre: "Juan"
+}
+```
