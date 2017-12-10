@@ -60,3 +60,33 @@ const objectinfb = {
 3. [Eventos Child](https://youtu.be/9pi0_6Li31k?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
 - Así como el evento `value` existe otro evento, el `child` nos da un mayor control sobre
 los elementos anidados
+
+```js
+const dbRefRoot = firebase.database().ref().child("objectinfb")
+const dbRefList = dbRefRoot.child("habilidades")
+
+//sinronizar cambios en el objeto
+//snap: (snapshot de la bd) Es un snapshot de la informacion que en ese momento se encuentra en la bd
+//pasando el snap a un json a mostrar en el elemento <pre>
+//JSON.stringify(valor[, remplazo [, espacio]])
+dbRefRoot.on("value",oSnap=> ePre.innerText = JSON.stringify(oSnap.val(),null,3))
+// sincronizar cambios lista
+// tal como está solo escucha los items borrados y nuevos, omite los updates
+//para los updates hay que añadir un id (key=id)
+dbRefList.on("child_added", oSnap => {
+    const eLi = document.createElement("li")
+    eLi.innerText = oSnap.val()
+    eLi.id = oSnap.key
+    eUlLista.appendChild(eLi)
+})
+
+dbRefList.on("child_changed", oSnap => {
+    const eLiChanged = document.getElementById(oSnap.key)
+    eLiChanged.innerText = oSnap.val()
+})
+
+dbRefList.on("child_removed", oSnap => {
+    const eLiRemove = document.getElementById(oSnap.key)
+    eLiRemove.remove()
+})    
+```
