@@ -90,3 +90,5 @@ dbRefList.on("child_removed", oSnap => {
     eLiRemove.remove()
 })    
 ```
+
+4. [Autentificación](https://youtu.be/TnKypnlf-1c?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
