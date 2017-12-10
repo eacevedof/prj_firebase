@@ -3,8 +3,9 @@
 ## [Tutorial Firebase 2017 - Playlist](https://www.youtube.com/watch?v=KIp_WKM4BIE&list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
 - Author: Jesús Conde
 
-### [Consola](https://console.firebase.google.com/project/fir-test-2017/database/fir-test-2017/data)
-### [Index.html](file:///C:/xampp/htdocs/prj_firebase/index.html)
+# requerimientos
+- [Consola](https://console.firebase.google.com/project/fir-test-2017/database/fir-test-2017/data)
+- [Index.html](file:///C:/xampp/htdocs/prj_firebase/index.html)
 
 ## indice
 
