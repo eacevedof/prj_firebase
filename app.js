@@ -44,5 +44,7 @@
         eLiRemove.remove()
     })    
 
+    //Titulo que se pasa al ejecutar la función
     document.getElementById("h1Top").innerText = sH1
+
 }("Firebase - Autenticación"))
