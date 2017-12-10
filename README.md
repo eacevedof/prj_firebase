@@ -37,6 +37,19 @@ __proto__:Object
 - En el ejemplo, se cambia la edad y reenvia todo el objeto `objectinfb`
 
 ```js
+//obtener el contenedor
+const ePre = document.getElementById("preObjeto")
+//hacer el bind con el objeto
+//ref apunta a la raiz de la bd
+//child apunta a la clave hijo del objeto. Algo parecido al nombre del campo
+const dbRef = firebase.database().ref().child("objectinfb")
+//sinronizar cambios en el objeto
+//snap: (snapshot de la bd) Es un snapshot de la informacion que en ese momento se encuentra en la bd
+
+//pasando el snap a un json a mostrar en el elemento <pre>
+//JSON.stringify(valor[, remplazo [, espacio]])
+dbRef.on("value",oSnap=> ePre.innerText = JSON.stringify(oSnap.val(),null,3))
+
 //Se ha definido un POJO en firebase
 const objectinfb = {
     apellidos: "López",
@@ -44,3 +57,6 @@ const objectinfb = {
     nombre: "Juan"
 }
 ```
+3. [Eventos Child](https://youtu.be/9pi0_6Li31k?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
+- Así como el evento `value` existe otro evento, el `child` nos da un mayor control sobre
+los elementos anidados
