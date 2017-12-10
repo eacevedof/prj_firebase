@@ -167,7 +167,43 @@ dbRefList.on("child_removed", oSnap => {
 5. [Almacenamiento](https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj)
 - Ejemplo de subir archivo
 - [Configurar reglas para almacenamiento](https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj&t=295)
+- Me estaba dando un error de js y es que tenia puesto el listener `change` en la barra de progreso
+- Tenia mal puesta la propiedad `bytesTransfered`, es `bytesTransferred` (con doble r)
 ```js
+   const arForm = [
+        {"id":"divAlert"},
+        {"id":"prgUploader"},
+        {"id":"filButton"}
+    ]
+
+    const oForms = arForm.reduce((oAc,oItem)=>{
+        let oTemp = {}
+        oTemp[oItem.id] = document.getElementById(oItem.id)
+        return Object.assign(oAc,oTemp)
+    },{})
+
+    //https://youtu.be/CN3N78KjY9o?list=PLEtcGQaT56chIjXff_cAEglfe6gBSNFHj&t=276
+    oForms.filButton.addEventListener("change",(oEvent) => {
+        //alert("uploader changed")
+        //guardamos el archivo que se está procesando
+        const oFile = oEvent.target.files[0]
+        console.log("oFile:",oFile)
+        //un apuntador a la ruta de firebase
+        const oStorageRef = firebase.storage().ref("mis_fotos/".concat(oFile.name))
+        //subir archivo
+        const oTask = oStorageRef.put(oFile)
+        
+        //actualizar barra de progreso
+        oTask.on("state_changed",(oSnapShot)=>{
+            console.log("progress","oSnapShot.totalBytes:",oSnapShot.totalBytes)
+            console.log("progress","oSnapShot.bytesTransferred:",oSnapShot.bytesTransferred)
+            const fPercentage =  (oSnapShot.bytesTransferred / oSnapShot.totalBytes) * 100
+            console.log("fPercentage:",fPercentage)
+            oForms.prgUploader.value = String(fPercentage)
+        }
+        ,(oErr)=>{console.log("error")}
+        ,()=>{console.log("complete")})//on.state_changed
+    })
 ```
 5. []()
 ```js

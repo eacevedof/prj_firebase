@@ -38,7 +38,9 @@
         //actualizar barra de progreso
         oTask.on("state_changed",(oSnapShot)=>{
             console.log("progress","oSnapShot.totalBytes:",oSnapShot.totalBytes)
-            const fPercentage =  (oSnapShot.bytesTransfered / oSnapShot.totalBytes) * 100
+            console.log("progress","oSnapShot.bytesTransferred:",oSnapShot.bytesTransferred)
+            const fPercentage =  (oSnapShot.bytesTransferred / oSnapShot.totalBytes) * 100
+            console.log("fPercentage:",fPercentage)
             oForms.prgUploader.value = String(fPercentage)
         }
         ,(oErr)=>{console.log("error")}
