@@ -18,6 +18,9 @@
     const dbRef = firebase.database().ref().child("objectinfb")
     //sinronizar cambios en el objeto
     //snap: (snapshot de la bd) Es un snapshot de la informacion que en ese momento se encuentra en la bd
-    dbRef.on("value",oSnap=>console.log(oSnap.val()))
+
+    //pasando el snap a un json a mostrar en el elemento <pre>
+    //JSON.stringify(valor[, remplazo [, espacio]])
+    dbRef.on("value",oSnap=> ePre.innerText = JSON.stringify(oSnap.val(),null,3))
 
 }())
