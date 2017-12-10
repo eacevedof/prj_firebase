@@ -98,7 +98,7 @@ dbRefList.on("child_removed", oSnap => {
 - Estos metodos devuelven una promesa
 - `auth.onAuthStateChanged(firebaseUser => {})` - Listener que comprueba el logueo y deslogueo de un usuario
 
-
+5. [RODRIGO](HOLA)
 ```js
 ```
 

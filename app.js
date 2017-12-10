@@ -20,7 +20,11 @@
         {"id":"btnLogout"},
     ]
 
-    const arElements = arForm.map(o => document.getElementById(o.id))
+    const arElements = arForm.map(o => {
+        const a = {}
+        a[o.id] = document.getElementById(o.id)
+        return a
+    })
     console.log(arElements)
 
     //Titulo que se pasa al ejecutar la función
