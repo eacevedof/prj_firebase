@@ -8,4 +8,4 @@
 
 ## indice
 
-1. [Conexión](https://www.youtube.com/watch?v=KIp_WKM4BIE&feature=youtu.be()
+1. [Conexión](https://www.youtube.com/watch?v=KIp_WKM4BIE&feature=youtu.be)
